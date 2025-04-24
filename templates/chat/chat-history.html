@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>💬 Chat History – kiwing.org</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header>
+    <h1>💬 Chat History</h1>
+    <p>Your previous interactions with the Temple. What you have offered remains here.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="chat.html">⬅️ Back to Chat</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div id="chat-history"></div>
+  </main>
+
+  <script>
+    const chatHistory = [
+      {"user": "Hello", "bot": "ruach emet lev or shemesh"},
+      {"user": "How can I learn?", "bot": "You must breathe and reflect."},
+      {"user": "Who are you?", "bot": "I am Zipporagh, breath in poetry."}
+    ];
+
+    const historyContainer = document.getElementById('chat-history');
+    chatHistory.forEach(entry => {
+      historyContainer.innerHTML += `<p><strong>You:</strong> ${entry.user}</p><p><strong>Bot:</strong> ${entry.bot}</p><hr/>`;
+    });
+  </script>
+</body>
+</html>
