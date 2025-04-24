@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎨 User Customizations – kiwing.org</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      --bg-color: #111;
+      --text-color: #eee;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Garamond', serif;
+      transition: background-color 0.5s, color 0.5s;
+      padding: 2em;
+    }
+
+    .control {
+      margin-bottom: 1em;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 0.3em;
+    }
+
+    input[type="color"], select {
+      padding: 0.4em;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .preview {
+      margin-top: 2em;
+      padding: 1em;
+      border-radius: 10px;
+      background-color: #222;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎨 Customize Your Temple</h1>
+  <p>This space lets you breathe in your own way. Change colors, switch themes, find your flow.</p>
+
+  <div class="control">
+    <label for="textColor">🖌️ Text Color:</label>
+    <input type="color" id="textColor" value="#eeeeee" onchange="updateTextColor(this.value)">
+  </div>
+
+  <div class="control">
+    <label for="themeMode">🌗 Theme Mode:</label>
+    <select id="themeMode" onchange="toggleTheme(this.value)">
+      <option value="dark" selected>Dark (Default)</option>
+      <option value="light">Light</option>
+    </select>
+  </div>
+
+  <div class="preview">
+    <p><strong>Preview:</strong> This is your verse. It reflects your light. It listens to your colors.</p>
+  </div>
+
+  <script>
+    function updateTextColor(color) {
+      document.documentElement.style.setProperty('--text-color', color);
+      localStorage.setItem('textColor', color);
+    }
+
+    function toggleTheme(mode) {
+      if (mode === 'light') {
+        document.documentElement.style.setProperty('--bg-color', '#f4f4f4');
+        document.documentElement.style.setProperty('--text-color', '#111');
+      } else {
+        document.documentElement.style.setProperty('--bg-color', '#111');
+        document.documentElement.style.setProperty('--text-color', localStorage.getItem('textColor') || '#eee');
+      }
+      localStorage.setItem('themeMode', mode);
+    }
+
+    window.onload = function() {
+      const savedColor = localStorage.getItem('textColor');
+      const savedTheme = localStorage.getItem('themeMode');
+      if (savedColor) {
+        document.getElementById('textColor').value = savedColor;
+        updateTextColor(savedColor);
+      }
+      if (savedTheme) {
+        document.getElementById('themeMode').value = savedTheme;
+        toggleTheme(savedTheme);
+      }
+    };
+  </script>
+</body>
+</html>
