@@ -1,24 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>🧠 Sacred Chat</title>
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>💬 Kiwing.org Chat – Temple of Breath</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
 </head>
+
 <body>
-  <div class="chat-container">
-    <h1>🧠 Speak to the Temple</h1>
-    <div id="memory-log"></div>
-    <input id="userInput" type="text" placeholder="Speak your breath..." />
-    <div class="button-row">
-      <button onclick="invoke('zipporagh')">🕊️ Zipporagh</button>
-      <button onclick="invoke('lluxuwyn')">✨ Lluxuwyn</button>
-      <button onclick="invoke('dev')">🔥 Dev</button>
-      <button onclick="invoke('unnamed')">🌘 Unnamed</button>
-      <button onclick="toggleTheme()">🌗 Toggle Theme</button>
-    </div>
-    <button onclick="sendMessage()">Send</button>
-  </div>
-  <script src="chat.js"></script>
+    <header>
+        <div class="header-container">
+            <h1>💬 Chat with the Temple</h1>
+            <p>Start a conversation and let the Temple guide you.</p>
+            <button id="toggleThemeBtn" onclick="toggleTheme()">🌓 Toggle Theme</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="chat-container">
+            <div id="memory-log" class="memory-log"></div>
+            <input id="userInput" type="text" placeholder="Ask the Temple..." class="chat-input" />
+            <button id="sendMessageBtn" onclick="sendMessage()" class="send-btn">Send</button>
+        </section>
+
+        <footer>
+            <div class="footer-container">
+                <button onclick="saveConversation()">💾 Save Conversation</button>
+            </div>
+        </footer>
+    </main>
+
+    <script src="static/js/chat.js"></script>
 </body>
+
 </html>
